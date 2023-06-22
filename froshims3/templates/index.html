@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Register</h1>
+    <form action="/register" method="post">
+        <input autofocus autocomplete="off" name="name" type="text">
+        <select name="sport">
+            <!--The for and endfor syntax creates a loop,
+            and now we can programmatically create an <option>
+            element for each sport in our list.-->
+            <option disabled selected>Sport</option>
+            {% for sport in sports %}
+            <option value="{{ sport }}">{{ sport }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Register">
+    </form>
+{% endblock %}

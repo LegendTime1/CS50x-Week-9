@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+<h3 align="left">Hello {{ uname }}</h3>
+<table class="table caption-top">
+    <caption>Portfolio</caption>
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">TOTAL</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for stock in portfolio %}
+            <tr>
+                <td>{{ stock["symbol"] }}</td>
+                <td>{{ stock["name"] }}</td>
+                <td>{{ stock["shares"] }}</td>
+                <td>{{ stock["price"] }}</td>
+                <td>{{ stock["price"] * stock["shares"] }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th scope="row">Portfolio Value</th>
+            <th scope="col">{{ stocks_value }}</th>
+          </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <th scope="row">Cash</th>
+        <th scope="1">{{ cash }}</th>
+      </tr>
+      <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th scope="row">TOTAL</th>
+            <td>{{ total }}</td>
+        </tr>
+    </tfoot>
+    </tbody>
+  </table>
+{% endblock %}

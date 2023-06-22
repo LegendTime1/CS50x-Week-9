@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+<table class="table caption-top">
+    <caption>History</caption>
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">Transaction</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for stock in transactions %}
+            <tr>
+                <td>{{ stock["symbol"] }}</td>
+                <td>{{ stock["name"] }}</td>
+                <td>{{ stock["shares"]|abs }}</td>
+                <td>{{ stock["price"] }}</td>
+                {% if stock["shares"] < 0 %}
+                    <td>Sold</td>
+                {% else %}
+                    <td>Bought</td>
+                {% endif %}
+                <td>{{ stock["date"] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
